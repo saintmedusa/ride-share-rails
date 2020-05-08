@@ -1,0 +1,20 @@
+<body >
+<h2 class="title">Trips</h2>
+
+<table>                         
+  <tr>                          
+    <th>Date</th>
+    <th>Cost</th>
+  </tr>
+<% @trips.each do |trip| %>  
+  <tr>
+    <td><%= trip.date %></td>
+    <td><%= trip.cost %></td>  
+    <td>    <%= link_to "Passenger Details", passenger_path(trip.passenger_id), :method => :get%>  </td>
+  </tr>
+<% end %>                       
+</table> 
+
+</body>
+
+<%# ## NOT NEEDED DELETE LATER -- ONLY FOR CODE REFERENCE %>

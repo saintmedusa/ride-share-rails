@@ -1,5 +1,5 @@
 class RelateTripstoPassengers < ActiveRecord::Migration[6.0]
   def change
-    add_reference :trips, :passenger, index: true
+    add_reference :trips, :passenger, foreign_key: true
   end
 end
