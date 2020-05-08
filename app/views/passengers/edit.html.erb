@@ -1,0 +1,8 @@
+<div class="todo_card">
+  <h2>Edit Page</h2>
+
+  <%= form_with model: @passenger, class:'passenger-form' do |f| %>
+    <p>Passenger to edit:</p>
+    <%= render partial: 'form' %> 
+  <% end %>
+</div>
