@@ -1,6 +1,9 @@
 class PassengersController < ActionController::Base
+  def home
+  end 
+
   def index
-    @passengers = Passenger.all
+    @passengers = Passenger.paginate(:page=>params[:page],:per_page=>15)
   end
 
   def show

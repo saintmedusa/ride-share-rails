@@ -12,7 +12,8 @@
     <td><%= passenger.phone_num %></td>  
     <td>    <%= link_to "Passenger Details", passenger_path(passenger.id), :method => :get%>  </td>
   </tr>
-<% end %>                       
-</table> 
+<% end %>                      
+</table>
+<%= will_paginate @passengers %>
 
 </body>
