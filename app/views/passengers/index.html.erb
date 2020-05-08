@@ -8,8 +8,9 @@
   </tr>
 <% @passengers.each do |passenger| %>  
   <tr>
-    <td><%= passenger.name %></td>  
+    <td><%= passenger.name %></td>
     <td><%= passenger.phone_num %></td>  
+    <td>    <%= link_to "Passenger Details", passenger_path(passenger.id), :method => :get%>  </td>
   </tr>
 <% end %>                       
 </table> 
