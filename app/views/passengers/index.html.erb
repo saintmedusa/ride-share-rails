@@ -1,6 +1,6 @@
 <body >
 <h2 class="title">Passengers</h2>
-
+<%= link_to 'Add a Passenger', new_passenger_path %>
 <table>                         
   <tr>                          
     <th>Name</th>
@@ -12,6 +12,7 @@
     <td><%= passenger.phone_num %></td>  
     <td><%= link_to "Passenger Details", passenger_path(passenger.id), :method => :get%>  </td>
     <td><%= link_to "Edit Passenger", edit_passenger_path(passenger.id), :method => :get%></td>
+    <td><%= link_to "Delete Passenger", delete_passenger_path(passenger.id), :method => :delete, data: {confirm: "Are you sure you want to delete the passenger: #{passenger.name}?"}%></td>
   </tr>
 <% end %>                      
 </table>

@@ -1,7 +1,4 @@
 class PassengersController < ActionController::Base
-  def home
-  end 
-
   def index
     @passengers = Passenger.paginate(:page=>params[:page],:per_page=>15)
   end
@@ -19,6 +16,20 @@ class PassengersController < ActionController::Base
     @passenger = Passenger.new
   end
 
+  def update
+    @passenger = Passenger.find_by(id: params[:id])
+    if @passenger.nil?
+      head :not_found
+      return
+    elsif @passenger.update(passenger_params)
+      redirect_to passenger_path 
+      return
+    else 
+      render :edit
+      return
+    end
+  end
+  
   def edit
     passenger_id = params[:id]
     @passenger = Passenger.find_by(id: passenger_id)
@@ -29,17 +40,31 @@ class PassengersController < ActionController::Base
     end  
   end
 
-  def update
-    @passenger = Passenger.find_by(id: params[:id])
+  #FIX
+  def destroy
+    passenger_id = params[:id]
+    @passenger = Passenger.find_by(id: passenger_id)
+
     if @passenger.nil?
       head :not_found
       return
-    elsif @passenger.update(passenger_params)
-      redirect_to passenger_path 
+    elsif 
+      @passenger.destroy
+      redirect_to passengers_path 
       return
     else 
-      render :new
+      render @passenger
       return
+    end
+  end
+
+  def create
+    @passenger = Passenger.new(passenger_params)
+
+    if @passenger.save
+      redirect_to @passenger
+    else
+      render :new, :bad_request
     end
   end
 
