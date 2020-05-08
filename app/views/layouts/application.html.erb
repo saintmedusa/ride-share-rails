@@ -9,7 +9,26 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+<body>
+  <div class="all">
+  <header class="titlemain">
+    <h1>Ride Share Rails</h1>
+    <nav class="mainnav">
+      <ul class="navtitles">
+        <li>
+          Holder
+        </li>
+        <li>
+          Holder
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="content">
     <%= yield %>
-  </body>
+  </main>
+  </div>
+  <footer>
+  <p>Like and subscribe.</p>
+  </footer>
 </html>

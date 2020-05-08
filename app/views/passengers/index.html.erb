@@ -1,0 +1,17 @@
+<body >
+<h2 class="title">Let's Get This Done:</h2>
+
+<table>                         
+  <tr>                          
+    <th>Name</th>
+    <th>Phone Number</th>
+  </tr>
+<% @passengers.each do |passenger| %>  
+  <tr>
+    <td><%= passenger.name %></td>  
+    <td><%= passenger.phone_num %></td>  
+  </tr>
+<% end %>                       
+</table> 
+
+</body>
