@@ -16,7 +16,8 @@
 <% @passenger.trips.each do |trip| %>  
   <tr>
     <td><%= trip.date %></td>
-    <td><%= trip.cost %></td>  
+    <td><%= trip.cost %></td>
+    <td><%= link_to "Trip Details", passenger_trip_path(trip.id), :method => :get%>  </td>  
   </tr>
 <% end %>                       
 </table> 
