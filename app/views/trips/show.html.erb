@@ -1,1 +1,8 @@
-<h2>Placeholder for individual trip page</h2>
+<div>
+  <h1><%= @trip.date %></h1>
+  <h1><%= @trip.cost %></h1>
+  <p><%= @trip.passenger.name%></p>
+</div>
+
+
+<p><%= link_to "Return to Passenger Details", passenger_path(@trip.passenger.id), :method => :get%> </p> 

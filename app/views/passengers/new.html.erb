@@ -1,6 +1,1 @@
-<div class="todo_card">
-<%= form_with model: @passenger, class:'passenger-form' do |f| %>
-  <p>Please provide the following information to save a new passenger:</p>
-  <%= render partial: 'form' %>
-<% end %>
-</div>
+<%= render partial: "form", locals: { action_name: "Create" } %>

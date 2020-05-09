@@ -1,0 +1,14 @@
+<%= form_with model: @trips, class: 'create-trip' do |f| %> 
+
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+
+  <%= f.label :rating %>
+  <%= f.select :rating, [1, 2, 3, 4, 5] %>
+
+  <%= f.submit "#{action_name} Trip" %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %> 
+<% end %>

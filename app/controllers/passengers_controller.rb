@@ -15,6 +15,26 @@ class PassengersController < ActionController::Base
   def new
     @passenger = Passenger.new
   end
+  
+  def edit
+    passenger_id = params[:id]
+    @passenger = Passenger.find_by(id: passenger_id)
+
+    if @passenger.nil?
+      head :not_found
+      return
+    end  
+  end
+
+  def create
+    @passenger = Passenger.new(passenger_params)
+
+    if @passenger.save
+      redirect_to @passenger
+    else
+      render :new, :bad_request
+    end
+  end
 
   def update
     @passenger = Passenger.find_by(id: params[:id])
@@ -29,42 +49,16 @@ class PassengersController < ActionController::Base
       return
     end
   end
-  
-  def edit
-    passenger_id = params[:id]
-    @passenger = Passenger.find_by(id: passenger_id)
-
-    if @passenger.nil?
-      head :not_found
-      return
-    end  
-  end
 
   #FIX
   def destroy
-    passenger_id = params[:id]
-    @passenger = Passenger.find_by(id: passenger_id)
-
-    if @passenger.nil?
+    passenger = Passenger.find_by(id: params[:id])
+    if passenger.nil?
       head :not_found
       return
-    elsif 
-      @passenger.destroy
-      redirect_to passengers_path 
-      return
-    else 
-      render @passenger
-      return
-    end
-  end
-
-  def create
-    @passenger = Passenger.new(passenger_params)
-
-    if @passenger.save
-      redirect_to @passenger
     else
-      render :new, :bad_request
+      author.destroy
+      redirect_to passengers_path
     end
   end
 

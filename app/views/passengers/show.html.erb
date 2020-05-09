@@ -11,15 +11,17 @@
 <table>                         
   <tr>                          
     <th>Date</th>
+    <th>ID</th>
     <th>Cost</th>
   </tr>
 <% @passenger.trips.each do |trip| %>  
   <tr>
     <td><%= trip.date %></td>
+    <td><%= trip.id %></td>
     <td><%= trip.cost %></td>
-    <td><%= link_to "Trip Details", passenger_trip_path(trip.id), :method => :get%>  </td>  
+    <td><%= link_to "Trip Details", passenger_trip_path(trip.passenger.id), :method => :get%>  </td>  
   </tr>
 <% end %>                       
 </table> 
-<%= link_to 'New Trip', [:new, @passenger, @trip] %>
+<%= link_to "New Trip", new_passenger_trip_path(@passenger.id), :method => :get %>
 </div>
