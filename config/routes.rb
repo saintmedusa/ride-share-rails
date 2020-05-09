@@ -11,7 +11,4 @@ Rails.application.routes.draw do
   resources :drivers do
     resources :trips
   end
-
-  delete '/passengers/:id', to: 'passengers#destroy', as: 'delete_passenger'
-
 end

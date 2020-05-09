@@ -55,9 +55,9 @@ class PassengersController < ActionController::Base
     passenger = Passenger.find_by(id: params[:id])
     if passenger.nil?
       head :not_found
-      return
+      return 
     else
-      author.destroy
+      passenger.destroy
       redirect_to passengers_path
     end
   end

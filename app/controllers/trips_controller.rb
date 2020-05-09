@@ -48,22 +48,22 @@ class TripsController < ActionController::Base
   end
 
   #FIX
-  def destroy
-    trip_id = params[:id]
-    @trip = Trip.find_by(id: trip_id)
+  # def destroy
+  #   trip_id = params[:id]
+  #   @trip = Trip.find_by(id: trip_id)
 
-    if @trip.nil?
-      head :not_found
-      return
-    elsif 
-      @trip.destroy
-      redirect_to trip_path 
-      return
-    else 
-      render @trip
-      return
-    end
-  end
+  #   if @trip.nil?
+  #     head :not_found
+  #     return
+  #   elsif 
+  #     @trip.destroy
+  #     redirect_to trip_path 
+  #     return
+  #   else 
+  #     render @trip
+  #     return
+  #   end
+  # end
 
   def create
     @trip = Trip.new(trip_params)
