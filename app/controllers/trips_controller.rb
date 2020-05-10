@@ -1,6 +1,14 @@
-class TripsController < ActionController::Base
+class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    if params[:author_id]
+      # This is the nested route, /author/:author_id/books
+      passenger = Passenger.find_by(id: params[:passenger_id])
+      @trips = passenger.trips
+
+    else
+      # This is the 'regular' route, /books
+      @trips = Trip.all
+    end
   end
 
   def show
@@ -23,6 +31,27 @@ class TripsController < ActionController::Base
     end
   end
 
+  def create
+    @trip = Trip.new(trip_params)
+
+    if @trip.save
+      redirect_to passenger_path
+    else
+      render :new, status: :bad_request
+      return
+    end
+  end
+
+  def edit
+    trip_id = params[:id]
+    @trip = Trip.find_by(id: trip_id)
+
+    if @trip.nil?
+      head :not_found
+      return
+    end  
+  end
+
   def update
     @trip = Trip.find_by(id: params[:id])
     if @trip.nil?
@@ -36,44 +65,7 @@ class TripsController < ActionController::Base
       return
     end
   end
-  
-  def edit
-    trip_id = params[:id]
-    @trip = Trip.find_by(id: trip_id)
 
-    if @trip.nil?
-      head :not_found
-      return
-    end  
-  end
-
-  #FIX
-  # def destroy
-  #   trip_id = params[:id]
-  #   @trip = Trip.find_by(id: trip_id)
-
-  #   if @trip.nil?
-  #     head :not_found
-  #     return
-  #   elsif 
-  #     @trip.destroy
-  #     redirect_to trip_path 
-  #     return
-  #   else 
-  #     render @trip
-  #     return
-  #   end
-  # end
-
-  def create
-    @trip = Trip.new(trip_params)
-
-    if @trip.save
-      redirect_to @trip
-    else
-      render :new, :bad_request
-    end
-  end
 
   private 
 

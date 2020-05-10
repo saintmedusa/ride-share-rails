@@ -1,7 +1,11 @@
 <div>
-  <h1><%= @trip.date %></h1>
-  <h1><%= @trip.cost %></h1>
-  <p><%= @trip.passenger.name%></p>
+  <h1>Date: <%= @trip.date %></h1>
+  <h1>Cost: <%= @trip.cost %></h1>
+  <% if @trip.rating != nil %>
+    <h1>Rating: <%= @trip.rating %></h1>
+  <% end %>
+  <%= link_to "Edit Trip", edit_passenger_trip_path(@trip) %>
+  <p>Passenger Name: <%= @trip.passenger.name%></p>
 </div>
 
 

@@ -1,4 +1,4 @@
-class PassengersController < ActionController::Base
+class PassengersController < ApplicationController
   def index
     @passengers = Passenger.paginate(:page=>params[:page],:per_page=>15)
   end
@@ -45,23 +45,38 @@ class PassengersController < ActionController::Base
       redirect_to passenger_path 
       return
     else 
-      render :edit
+      render :edit, :bad_request
       return
     end
   end
 
   #FIX
+  # def destroy
+  #   @passenger = Passenger.find_by(id: params[:id])
+  #   if @passenger.nil?
+  #     head :not_found
+  #     return 
+  #   end
+
+  #   @passenger.destroy
+    
+  #   redirect_to passengers_path
+    
+  #   return 
+  # end
+
+
   def destroy
     passenger = Passenger.find_by(id: params[:id])
     if passenger.nil?
       head :not_found
-      return 
+      return
     else
       passenger.destroy
       redirect_to passengers_path
     end
   end
-
+  
   private 
 
   def passenger_params
