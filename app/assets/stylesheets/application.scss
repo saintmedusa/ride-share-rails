@@ -16,3 +16,24 @@
 @import "bootstrap";
 
 @import "**/*";
+
+.all {
+  background-color: #627B7C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainnav {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  justify-content: space-between;
+}
+
+.navtitles {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

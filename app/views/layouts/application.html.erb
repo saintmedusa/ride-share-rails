@@ -8,18 +8,19 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<div class="all">
 <header>
     <h1>Welcome to Ride Share</h1>
   </header>
   <body>
   <header>
-    <nav>
-    <ul>
-      <li>HOLD</li>
-      <li>HOLD</li>
-      <li>HOLD</li>
-      <li>HOLD</li>
-    </ul>
+    <nav class="mainnav">
+      <ul class="navtitles">
+        <li>HOLD</li>
+        <li>HOLD</li>
+        <li>HOLD</li>
+        <li>HOLD</li>
+      </ul>
     </nav>
   </header>
     <%= yield %>
@@ -27,4 +28,5 @@
   <footer>
     <p>Always read the fine print.</p>
   </footer>
+  <div>
 </html>
