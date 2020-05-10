@@ -21,7 +21,7 @@
       <td><%= trip.date %></td>
       <td><%= trip.id %></td>
       <td><%= trip.cost %></td>
-      <td><%= link_to "Trip Details", passenger_trips_path(trip.passenger, trip.id), :method => :get, class: 'table-link'%> </td>
+      <td><%= link_to "Trip Details", passenger_trip_path(trip.passenger, trip.id), :method => :get, class: 'table-link'%> </td>
     </tr>
   <% end %>                       
   </table>
