@@ -5,7 +5,7 @@
   <div class="total">
   <h2>Running Total</h2>
   <%# RESOURCE: https://apidock.com/rails/ActiveRecord/Calculations/sum %>
-  <p class='value'> <%= @passenger.sum.nil? ? "No Trips": @passenger.sum %>
+  <p class='value'> <%= @passenger.sum.nil? ? "No Trips": "$ #{@passenger.sum}" %>
  </p>
  </div>
 

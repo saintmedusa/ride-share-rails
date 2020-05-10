@@ -17,7 +17,7 @@
     <nav class="mainnav">
       <ul class="navtitles">
         <li><%= link_to 'Add a Passenger', new_passenger_path %></li>
-        <li><%= link_to 'All Passengers', new_passenger_path %></li>
+        <li><%= link_to 'All Passengers', passengers_path %></li>
         <li>HOLD FOR ADD DRIVER</li>
         <li>HOLD FOR ALL DRIVERS</li>
       </ul>
@@ -26,7 +26,7 @@
     <%= yield %>
   </body>
   <footer>
-    <p>Always read the fine print.</p>
+    <p><i>Always read the fine print.</i></p>
   </footer>
   <div>
 </html>
