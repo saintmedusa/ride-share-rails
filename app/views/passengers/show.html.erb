@@ -2,12 +2,14 @@
   <h2><%= @passenger[:name]%></h2>
   <br>
   <p><%= @passenger[:phone_num]%></p>
+  <div class="total">
   <h2>Running Total</h2>
   <%# RESOURCE: https://apidock.com/rails/ActiveRecord/Calculations/sum %>
   <p class='value'> <%= @passenger.sum.nil? ? "No Trips": @passenger.sum %>
  </p>
-  <h2>Trips<h2>
-  <table>                         
+ </div>
+
+  <table>                       
     <tr>                          
       <th>Date</th>
       <th>ID</th>
@@ -23,9 +25,10 @@
     </tr>
   <% end %>                       
   </table>
-  <div class="actions"> 
+  <div class="button-row"> 
     <%= link_to 'Add Trip', new_passenger_trip_path(@passenger.id), class: 'link' %>
     <%= link_to "Edit Passenger", edit_passenger_path(@passenger.id), :method => :get, class: 'link' %>
+    </div>  <div class="button-row">
     <%= link_to "Delete", passenger_path(@passenger.id),:method => :delete, class: 'link' %>
     <%= link_to "Return to Passenger List", passengers_path, :method => :get, class: 'link' %>
   </div> 

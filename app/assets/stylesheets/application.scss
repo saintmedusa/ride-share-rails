@@ -35,5 +35,18 @@
   list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.navtitles a {
+  color: black;
+  padding: 10px;
+}
+
+footer {
+  padding: 50px;
+}
+
+header {
+  padding-top: 50px;
 }
