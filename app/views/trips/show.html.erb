@@ -1,12 +1,21 @@
-<div>
-  <h1>Date: <%= @trip.date %></h1>
-  <h1>Cost: <%= @trip.cost %></h1>
+<div class="trip-card">
+  <div class="row">
+    <h3>Passenger</h3>
+    <h4><%= @trip.passenger.name%></h4>
+  </div>
+  <div class="row"
+    ><h3>Date</h3>
+    <h4><%= @trip.date %></h3>
+  </div>
+  <div class="row">
+    <h3>Cost</h3>
+    <h4>$<%= @trip.cost %></h3>
+  </div>
   <% if @trip.rating != nil %>
-    <h1>Rating: <%= @trip.rating %></h1>
+    <div class="row"><h3>Rating</h3><h4><%= @trip.rating %></h3></div>
   <% end %>
-  <%= link_to "Edit Trip", edit_passenger_trip_path(@trip) %>
-  <p>Passenger Name: <%= @trip.passenger.name%></p>
+    <div class="row"><%= link_to "Edit Trip", edit_passenger_trip_path(@trip), :method => :get, class: 'link' %></div>
 </div>
 
 
-<p><%= link_to "Return to Passenger Details", passenger_path(@trip.passenger.id), :method => :get%> </p> 
+<%= link_to "Return to Passenger Details", passenger_path(@trip.passenger.id), :method => :get, class: 'link' %>
