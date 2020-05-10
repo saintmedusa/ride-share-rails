@@ -1,11 +1,13 @@
 <%= form_with model: @passenger, class:'passenger-form' do |f| %>
-  <div>
-    <%= f.label :name%>
-    <%= f.text_field :name %>
+  <div class="row">
+    <div class="cell"><%= f.label :name%></div>
+    <div class="cell"><%= f.text_field :name %></div>
   </div>
-    <div>
-    <%= f.label :phone_num%>
-    <%= f.text_field :phone_num %>
+  <div class="row">
+    <div class="cell"><%= f.label :phone_num%></div>
+    <div class="cell"><%= f.text_field :phone_num %></div>
   </div>
-    <%= f.submit "Submit"%>
+  <div class="row">
+    <%= f.submit "Submit", class: 'link'%>
+  </div>
 <% end %>

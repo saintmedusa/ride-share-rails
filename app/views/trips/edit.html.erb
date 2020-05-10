@@ -1,1 +1,3 @@
 <%= render 'form', model: @trip %>
+
+<%= link_to "Return to Passenger Details", passenger_path(@trip.passenger.id), :method => :get, class: 'link' %>
