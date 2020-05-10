@@ -1,13 +1,21 @@
+
 <%= form_with model: @trips, class: 'create-trip' do |f| %> 
+  <div class="row">
+     <div class="cell"> <%= f.label :date %>  </div>
+    <div class="cell"><%= f.date_field :date %>  </div>
+  </div>
 
-  <%= f.label :date %>
-  <%= f.date_field :date %>
+  <div class="row">
+    <div class="cell"><%= f.label :cost %>  </div>
+    <div class="cell"><%= f.text_field :cost %>  </div>
+  </div>
 
-  <%= f.label :cost %>
-  <%= f.text_field :cost %>
+  <div class="row">
+    <div class="cell"><%= f.label :rating %>  </div>
+    <div class="cell"><%= f.select :rating, [nil, 1, 2, 3, 4, 5] %>  </div>
+  </div>
 
-  <%= f.label :rating %>
-  <%= f.select :rating, [nil, 1, 2, 3, 4, 5] %>
-
-  <%= f.submit "#{action_name} Trip" %>
+  <div class="row">
+    <%= f.submit "#{action_name} Trip", class: 'link' %>
+  </div>
 <% end %>

@@ -30,3 +30,25 @@
 .link:hover {
   background-color: #F1B480;
 }
+
+.create-trip {
+  height: 400px;
+  width: 400px;
+  border-radius: 25px;
+  padding-top: 20px;
+  color: #F1B480;
+  background-color: #213C55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cell {
+  padding: 10px;
+}
