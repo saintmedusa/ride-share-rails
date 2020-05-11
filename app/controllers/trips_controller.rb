@@ -21,13 +21,11 @@ class TripsController < ApplicationController
   end
 
   def new
-    if params[:passenger_id]
-      # This is the nested route, /author/:author_id/books/new
+    if params[:passenger_id].nil?
+      @trip = Trip.new
+    else
       passenger = Passenger.find_by(id: params[:passenger_id])
       @trip = passenger.trips.new
-    else
-      # This is the 'regular' route, /books/new
-      @trip = Trip.new
     end
   end
 
@@ -35,9 +33,9 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
 
     if @trip.save
-      redirect_to passenger_path
+      redirect_to trip_path
     else
-      render :new, status: :bad_request
+      render :new
       return
     end
   end
