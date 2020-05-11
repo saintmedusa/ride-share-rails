@@ -64,6 +64,16 @@ class TripsController < ApplicationController
     end
   end
 
+  def destroy
+    @trip = Trip.find_by(id: params[:id])
+    if @trip.nil?
+      head :not_found
+      return
+    else
+      @trip.destroy
+      redirect_to passengers_path
+    end
+  end
 
   private 
 

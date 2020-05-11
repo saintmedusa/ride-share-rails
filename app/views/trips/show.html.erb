@@ -18,7 +18,8 @@
   <% if @trip.rating != nil %>
     <div class="column"><h3>Rating</h3><h4><%= @trip.rating %></h3></div>
   <% end %>
-    <div class="column"><%= link_to "Update Trip Rating", edit_passenger_trip_path(@trip), :method => :get, class: 'link' %></div>
+  <div class="column"><%= link_to "Update Trip Rating", edit_passenger_trip_path(@trip), :method => :get, class: 'link' %></div>
+  <div class="column"><%= link_to "Delete Trip", passenger_trip_path(@trip), :method => :delete, class: 'link', data: {confirm: "Are you sure you would like to delete this trip?"} %></div>
 </div>
 
 
