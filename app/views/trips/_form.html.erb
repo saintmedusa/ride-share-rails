@@ -10,8 +10,8 @@
 <% end %>
 
   <div class="row">
-     <div class="cell"> <%= f.label :date %>  </div>
-    <div class="cell"><%= f.date_field :date %>  </div>
+    <div class="cell"> <%= f.label :date %>  </div>
+    <%= select_date Date.today, prefix: :start_date %>
   </div>
 
   <div class="row">

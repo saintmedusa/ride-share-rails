@@ -1,26 +1,31 @@
-<div class="column">
-<h3>Update rating for: </h3>
-<h4><%= @trip.passenger.name %></h4>
-<p><%= @trip.date %></p>
-<p><%= @trip.cost %></p>
-</div>
-<%= form_with model: @trip, class: 'edit-trip' do |f| %> 
-  <% if @trip.errors.any? %>
-  <ul class="errors">
-    <% @trip.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
+<div class="trip-card">
+  <div class="column">
+  <h3>Update rating for: </h3>
+  <h4><%= @trip.passenger.name %></h4>
+  <p><%= @trip.date %></p>
+  <p><%= @trip.cost %></p>
+  </div>
+
+  <%= form_with model: @trip, class: 'edit-trip' do |f| %> 
+    <% if @trip.errors.any? %>
+    <ul class="errors">
+      <% @trip.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
     <% end %>
-  </ul>
-<% end %>
 
-  <div class="row">
-    <div class="cell"><%= f.label :rating %>  </div>
-    <div class="cell"><%= f.select :rating, [nil, 1, 2, 3, 4, 5] %>  </div>
-  </div>
+    <div class="row">
+      <div class="cell"><%= f.label :rating %>  </div>
+      <div class="cell"><%= f.select :rating, [nil, 1, 2, 3, 4, 5] %>  </div>
+    </div>
 
-  <div class="row">
-    <%= f.submit "Update Trip", class: 'link' %>
-  </div>
+    <div class="row">
+      <%= f.submit "Update Trip", class: 'link' %>
+    </div>
 <% end %>
+</div>
+
+<%= link_to "Return to Passenger Details", passenger_path(@trip.passenger.id), :method => :get, class: 'link' %>
