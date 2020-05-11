@@ -33,7 +33,7 @@ class PassengersController < ApplicationController
     if @passenger.save
       redirect_to @passenger
     else
-      render :new, :bad_request
+      render :new
     end
   end
 
