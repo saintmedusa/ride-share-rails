@@ -15,7 +15,7 @@
     <h3>Driver</h3>
     <h4><%= @trip.driver.name %></h3>
   </div>
-  <%= form_with model: @trip, class: 'column' do |f| %> 
+  <%= form_with model: @trips, class: 'column', method: "patch" do |f| %> 
     <% if @trip.errors.any? %>
     <ul class="errors">
       <% @trip.errors.each do |column, message| %>
