@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # RESOURCE ON NESTED ROUTES: https://stackoverflow.com/questions/25134198/ruby-on-rails-access-model-data-within-another-model
   
-  # root to: 'passengers#index'
+  root to: 'homepage#index'
   # resources :trips
     
   resources :trips, except: [:index]
