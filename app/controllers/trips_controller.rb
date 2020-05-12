@@ -8,42 +8,16 @@ class TripsController < ApplicationController
     end  
   end
 
-  def new
-    @trip = Trip.new
-  end
-
-  
   def create
-    passenger = Passenger.find_by(id: params[:passenger_id])
+    @trip = Trip.new(trip_params)
 
-    @trip = Trip.new
-    @trip.passenger = passenger
-    # @trip.driver = driver
-    @trip.date = Date.today
-    @trip.cost = rand(1000..3000)
     if @trip.save
       redirect_to trip_path
     else
       render :new
+      return
     end
   end
-    # @trip = Trip.new_trip
-    # passenger = Passenger.find_by(id: params[:passenger_id])
-    # @trip = Trip.new_trip(passenger[:passenger_id])
-
-    # if @trip.save
-    #   redirect_to passenger_path
-    # else
-    #   render :error
-    #   return
-    # end
-  #   if params[:passenger_id]
-  #     passenger = Passenger.find_by(id: params[:passenger_id])
-  #     @trip = passenger.trips.new
-  #   else
-  #     redirect_to passengers_path
-  #   end
-  # end
 
   def edit
     trip_id = params[:id]
@@ -60,12 +34,12 @@ class TripsController < ApplicationController
     if @trip.nil?
       head :not_found
       return
-    elsif @trip.update(trip_params)
-      redirect_to @trip 
-      return
-    else 
+    end
+
+    if @trip.update(trip_params)
+      redirect_to @trip
+    else
       render :edit
-      return
     end
   end
 
@@ -84,6 +58,6 @@ class TripsController < ApplicationController
   private 
 
   def trip_params
-    return params.require(:trip).permit(:date, :rating, :cost)
+    return params.require(:trip).permit(:passenger_id, :date, :rating, :cost)
   end
 end
