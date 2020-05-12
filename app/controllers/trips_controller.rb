@@ -1,10 +1,11 @@
 class TripsController < ApplicationController
 
   def show
-    @trip = Trip.find(params[:id].to_i)
+    @trip = Trip.find(params[:id])
 
     if @trip.nil?
-      render :notfound, status: :not_found    
+      head :not_found
+      return   
     end  
   end
 
@@ -54,6 +55,12 @@ class TripsController < ApplicationController
 
   def destroy
     @deleted_trip = Trip.find_by(id: params[:id])
+
+    if @deleted_trip.nil?
+      head :not_found
+      return
+    end
+
     @deleted_trip.destroy
     redirect_to passengers_path
   end
