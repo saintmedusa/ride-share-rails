@@ -1,35 +1,32 @@
 class TripsController < ApplicationController
-  # def index
-  #   if params[:author_id]
-  #     # This is the nested route, /author/:author_id/books
-  #     passenger = Passenger.find_by(id: params[:passenger_id])
-  #     @trips = passenger.trips
-
-  #   else
-  #     # This is the 'regular' route, /books
-  #     @trips = Trip.all
-  #   end
-  # end
 
   def show
-    trip_id = params[:id]
-    @trip = Trip.find_by(id: trip_id)
+    @trip = Trip.find(params[:id].to_i)
 
     if @trip.nil?
-      redirect_to passenger_path
+      render :notfound, status: :not_found    
     end  
   end
 
-  # def new
-  #   if params[:passenger_id].nil?
-  #     @trip = Trip.new
-  #   else
-  #     passenger = Passenger.find_by(id: params[:passenger_id])
-  #     @trip = passenger.trips.new
-  #   end
-  # end
+  def new
+    @trip = Trip.new
+  end
 
+  
   def create
+    passenger = Passenger.find_by(id: params[:passenger_id])
+
+    @trip = Trip.new
+    @trip.passenger = passenger
+    # @trip.driver = driver
+    @trip.date = Date.today
+    @trip.cost = rand(1000..3000)
+    if @trip.save
+      redirect_to trip_path
+    else
+      render :new
+    end
+  end
     # @trip = Trip.new_trip
     # passenger = Passenger.find_by(id: params[:passenger_id])
     # @trip = Trip.new_trip(passenger[:passenger_id])
@@ -40,14 +37,13 @@ class TripsController < ApplicationController
     #   render :error
     #   return
     # end
-    if params[:passenger_id]
-      passenger = Passenger.find_by(id: params[:passenger_id])
-      @trip = passenger.trips.new
-    else
-      Trip.new_trip(params[:passenger_id])
-      redirect_to passenger_path
-    end
-  end
+  #   if params[:passenger_id]
+  #     passenger = Passenger.find_by(id: params[:passenger_id])
+  #     @trip = passenger.trips.new
+  #   else
+  #     redirect_to passengers_path
+  #   end
+  # end
 
   def edit
     trip_id = params[:id]
@@ -74,15 +70,14 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    @trip = Trip.find_by(id: params[:id])
-    
     if @trip.nil?
       head :not_found
       return
+    else  
+      @trip = Trip.find(params[:id])
+      @trip.destroy
     end
-
-    @trip.destroy
-    redirect_to passengers_path
+    redirect_to trips_path
     
   end
 

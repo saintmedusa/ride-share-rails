@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # resources :trips
   
   resources :passengers do
-    resources :trips
+    resources :trips 
   end
   
   resources :drivers do

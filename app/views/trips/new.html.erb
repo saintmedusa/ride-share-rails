@@ -1,12 +1,12 @@
 
-  <%# <div class="column"> %>
-  <%# <h3>New trip for: </h3> %>
-  <%# <h4><%= @trip.passenger.name %></h4> %>
-  <%# </div> %>
+  <div class="column">
+  <h3>New trip for: </h3>
+  <h4><%= @trip %></h4>
+  </div>
 
-  <%# <%= form_with model: @trip, class:'create-trip' do |f| %> %>
-    <%# <%= render partial: "form", locals: { action_name: "New" } %> %>
-  <%# <% end %> %>
+ <%= form_with model: @trip, class:'create-trip' do |f| %>
+   <%= render partial: "form", locals: { action_name: "New" } %>
+<% end %>
 
 <%# <%= link_to "Return to Passenger Details", passenger_path(@trip.passenger.id), :method => :get, class: 'link' %> %>
 <%# </body> %>
