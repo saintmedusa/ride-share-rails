@@ -8,6 +8,15 @@ class TripsController < ApplicationController
     end  
   end
 
+  def new
+    if params[:passenger_id].nil?
+      @trip = Trip.new
+    else
+      passenger = Passenger.find_by(id: params[:passenger_id])
+      @trip = passenger.trips.new
+    end
+  end
+  
   def create
     @trip = Trip.new(trip_params)
 
@@ -44,15 +53,9 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    if @trip.nil?
-      head :not_found
-      return
-    else  
-      @trip = Trip.find(params[:id])
-      @trip.destroy
-    end
-    redirect_to trips_path
-    
+    @deleted_trip = Trip.find_by(id: params[:id])
+    @deleted_trip.destroy
+    redirect_to passengers_path
   end
 
   private 
