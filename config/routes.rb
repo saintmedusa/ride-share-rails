@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   # root to: 'passengers#index'
   # resources :trips
     
-  resources :trips
-  
+  resources :trips, except: [:index]
+
   resources :passengers do
-    resources :trips, except: :index 
+    resources :trips, only: [:new, :show]
   end
   
   resources :drivers
-
 
 end
