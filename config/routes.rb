@@ -3,6 +3,16 @@ Rails.application.routes.draw do
 
   # RESOURCE ON NESTED ROUTES: https://stackoverflow.com/questions/25134198/ruby-on-rails-access-model-data-within-another-model
   
+  get '/drivers', to: 'drivers#index'
+
+  get '/drivers/:id', to: 'drivers#show'
+
+  post '/drivers', to: 'drivers#new'
+
+  patch '/drivers/number', to: 'drivers#edit'
+
+
+
   # root to: 'passengers#index'
   resources :trips
   
