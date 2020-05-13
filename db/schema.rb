@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 2020_05_13_073150) do
     t.boolean "available", default: true
   end
 
+  create_table "homepages", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "passengers", force: :cascade do |t|
     t.string "name"
     t.string "phone_num"

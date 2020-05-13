@@ -1,12 +1,22 @@
 <div class="trip-card">
   <div class="column">
-  <h3>Update rating for: </h3>
-  <h4><%= @trip.passenger.name %></h4>
-  <p><%= @trip.date %></p>
-  <p><%= @trip.cost %></p>
+    <h3>Passenger</h3>
+    <h4><%= @trip.passenger.name%></h4>
+  </div>
+  <div class="column"
+    ><h3>Date</h3>
+    <h4><%= @trip.date %></h3>
+  </div>
+  <div class="column">
+    <h3>Cost</h3>
+    <h4>$<%= @trip.cost %></h3>
+  </div>
+  <div class="column">
+    <h3>Driver</h3>
+    <h4><%= @trip.driver.name %></h3>
   </div>
 
-  <%= form_with model: @trip, class: 'edit-trip' do |f| %> 
+  <%= form_with model: @trip, class: 'column' do |f| %> 
     <% if @trip.errors.any? %>
     <ul class="errors">
       <% @trip.errors.each do |column, message| %>
@@ -18,12 +28,12 @@
     <% end %>
 
     <div class="row">
-      <div class="cell"><%= f.label :rating %>  </div>
-      <div class="cell"><%= f.select :rating, [nil, 1, 2, 3, 4, 5] %>  </div>
+      <div class="cell"><h3><%= f.label :rating %></h3></div>
+      <div class="cell"><h4><%= f.select :rating, [nil, 1, 2, 3, 4, 5] %> <h3></div>
     </div>
 
     <div class="row">
-      <%= f.submit "Update Trip", class: 'link' %>
+      <%= f.submit "Update Trip", class: 'link'%>
     </div>
 <% end %>
 </div>

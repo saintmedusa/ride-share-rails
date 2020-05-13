@@ -11,12 +11,6 @@ describe PassengersController do
       get "/passengers"
       must_respond_with :success
     end
-
-    it "can get passenger_trips_path" do
-      get passenger_trips_path(Passenger.first.id)
-
-      must_respond_with :success
-    end
   end
 
   describe "show" do

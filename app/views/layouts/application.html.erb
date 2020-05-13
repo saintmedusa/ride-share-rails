@@ -16,10 +16,11 @@
   <header>
     <nav class="mainnav">
       <ul class="navtitles">
+        <li><%= link_to 'Home', root_path %></li>
         <li><%= link_to 'Add a Passenger', new_passenger_path %></li>
         <li><%= link_to 'All Passengers', passengers_path %></li>
-        <li>HOLD FOR ADD DRIVER</li>
-        <li>HOLD FOR ALL DRIVERS</li>
+        <li><%= link_to 'Add a Driver', new_driver_path %></li>
+        <li><%= link_to 'All Drivers', drivers_path %></li>
       </ul>
     </nav>
   </header>

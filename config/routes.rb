@@ -10,17 +10,16 @@ Rails.application.routes.draw do
   post '/drivers', to: 'drivers#new'
 
   patch '/drivers/number', to: 'drivers#edit'
-
-
-
-  # root to: 'passengers#index'
-  resources :trips
   
+  root to: 'homepage#index'
+  # resources :trips
+    
+  resources :trips, except: [:index]
+
   resources :passengers do
-    resources :trips
+    resources :trips, only: [:new, :show, :index]
   end
   
-  resources :drivers do
-    resources :trips
-  end
+  resources :drivers
+
 end
